@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.departmentalresourcemanagement.features.home.ui.screens.HomeContent
 import com.example.departmentalresourcemanagement.ui.theme.DepartmentalResourceManagementTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,13 +20,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DepartmentalResourceManagementTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+
+                    HomeContent(
+                        username = "Revanth",
+                        userBitmap = null,
+                        onNavigate = {},
+                        openNotifications = {}
                     )
                 }
-            }
+
         }
     }
 }
