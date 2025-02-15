@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.example.departmentalresourcemanagement.features.home.ui.components.HomeNavigationDrawer
 import com.example.departmentalresourcemanagement.features.home.ui.components.HomeTopBar
 import com.example.departmentalresourcemanagement.features.home.ui.navigation.HomeDestinations
+import com.example.departmentalresourcemanagement.features.home.ui.navigation.toDestination
 import com.example.departmentalresourcemanagement.features.home.viewmodel.HomeNavigationItems
 import kotlinx.coroutines.launch
 
@@ -48,10 +49,10 @@ fun HomeContent(
         modifier = modifier,
         navigateItem = {
             coroutineScope.launch { drawerState.close() }
-//            when (it) {
-//                HomeNavigationItems.Logout -> showLogoutDialog = true
-//                else -> onNavigate(it.toDestination())
-//            }
+            when (it) {
+                HomeNavigationItems.LOGOUT -> showLogoutDialog = true
+                else -> onNavigate(it.toDestination())
+            }
         },
         content = {
             Scaffold(
