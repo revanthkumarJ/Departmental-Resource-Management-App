@@ -44,6 +44,10 @@ enum class HomeNavigationItems(
         nameResId = R.string.message_from_officials,
         imageVector = Icons.Default.Face,
     ),
+    CR_PROFILES(
+        nameResId = R.string.cr_profiles,
+        imageVector = Icons.Default.Face,
+    ),
 
 
 
@@ -62,6 +66,7 @@ enum class HomeNavigationItems(
     LOGOUT(
         nameResId = R.string.logout,
         imageVector = Icons.Default.ExitToApp,
-    )
+    ),
+
 
 }

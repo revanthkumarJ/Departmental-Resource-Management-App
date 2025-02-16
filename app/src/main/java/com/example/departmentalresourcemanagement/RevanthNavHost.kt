@@ -16,6 +16,8 @@ import com.example.departmentalresourcemanagement.features.about.ui.navigation.a
 import com.example.departmentalresourcemanagement.features.about.ui.navigation.navigateToAboutScreen
 import com.example.departmentalresourcemanagement.features.cr.ui.navigation.crNavGraph
 import com.example.departmentalresourcemanagement.features.cr.ui.navigation.navigateToCRScreen
+import com.example.departmentalresourcemanagement.features.crprofiles.ui.navigation.crProfileNavGraph
+import com.example.departmentalresourcemanagement.features.crprofiles.ui.navigation.navigateToCrProfileScreen
 import com.example.departmentalresourcemanagement.features.faculty.ui.navigation.facultyNavGraph
 import com.example.departmentalresourcemanagement.features.faculty.ui.navigation.navigateToFacultyScreen
 import com.example.departmentalresourcemanagement.features.hod.ui.navigation.hodNavGraph
@@ -53,6 +55,7 @@ fun DepartmentNavHost(
         hodNavGraph(navigateBack = navController::popBackStack)
         officialsNavGraph(navigateBack = navController::popBackStack)
         facultyNavGraph (navigateBack = navController::popBackStack)
+        crProfileNavGraph(navigateBack = navController::popBackStack)
     }
 }
 
@@ -84,6 +87,7 @@ fun handleHomeNavigation(
         HomeDestinations.HOD -> navController.navigateToHodScreen()
         HomeDestinations.OFFICIALS -> navController.navigateToOfficialsScreen()
         HomeDestinations.Timetable -> navController.navigateToTimeTableScreen()
+        HomeDestinations.CRS_PROFILES -> navController.navigateToCrProfileScreen()
     }
 }
 

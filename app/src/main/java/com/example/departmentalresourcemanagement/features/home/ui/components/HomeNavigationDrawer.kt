@@ -87,7 +87,7 @@ internal fun HomeNavigationDrawer(
                             onClick = { navigateItem(item) },
                         )
                         Spacer(modifier = Modifier.height(12.dp))
-                        if (item == HomeNavigationItems.OFFICIALS) {
+                        if (item == HomeNavigationItems.CR_PROFILES) {
                             Column {
                                 Spacer(modifier = Modifier.height(12.dp))
                                 HorizontalDivider(
