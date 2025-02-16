@@ -103,6 +103,3 @@ internal fun HomeNavigationDrawer(
     )
 }
 
-fun navigateItem(item: HomeNavigationItems) {
-    // Function implementation will be added later
-}
