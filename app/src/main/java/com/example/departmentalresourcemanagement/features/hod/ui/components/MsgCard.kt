@@ -1,6 +1,7 @@
 package com.example.departmentalresourcemanagement.features.hod.ui.components
 
 import android.graphics.Color
+import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,10 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.departmentalresourcemanagement.core.other.formatDateAndDay
+import com.google.firebase.Timestamp
 
 
 @Composable
-fun MsgCard(name:String) {
+fun MsgCard(name: String, message: String, timestamp: Timestamp?,title: String) {
+    var dateDay= formatDateAndDay(timestamp)
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -47,15 +51,15 @@ fun MsgCard(name:String) {
                     verticalArrangement = Arrangement.spacedBy(2.dp),
                     horizontalAlignment = Alignment.End
                 ) {
-                    Text("28/7/2025", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
-                    Text("3:00 PM", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
+                    Text(dateDay["date"]!!, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
+                    Text(dateDay["day"]!!, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
                 }
             }
             Spacer(Modifier.height(8.dp))
-            Text("Title of msg", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(8.dp))
             Text(
-                "Department Resource Management App is a native Android app developed to manage Department resources efficiently, such as information, official details, timetables, etc.",
+                message,
                 style = MaterialTheme.typography.bodyMedium
             )
         }

@@ -19,10 +19,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.departmentalresourcemanagement.RevanthNavGraph.MAIN_GRAPH
 import com.example.departmentalresourcemanagement.features.home.ui.screens.HomeContent
 import com.example.departmentalresourcemanagement.ui.theme.DepartmentalResourceManagementTheme
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this)
         enableEdgeToEdge()
 
         setContent {
@@ -37,8 +40,13 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             DepartmentalResourceManagementTheme {
 
-                    RootNavGraph(onClickLogout = {},navHostController = navController,startDestination = MAIN_GRAPH)
-                }
+                    RootNavGraph(onClickLogout = {
+                        FirebaseAuth.getInstance().signOut()
+                        navController.navigate(NavRoutes.Login.route) {
+                            popUpTo(RevanthNavGraph.MAIN_GRAPH) { inclusive = true }
+                        }
+                    },navHostController = navController,startDestination = MAIN_GRAPH)
+            }
 
         }
     }

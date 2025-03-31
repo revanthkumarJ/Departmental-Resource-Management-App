@@ -14,6 +14,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.departmentalresourcemanagement.features.about.ui.navigation.aboutNavGraph
 import com.example.departmentalresourcemanagement.features.about.ui.navigation.navigateToAboutScreen
+import com.example.departmentalresourcemanagement.features.complaints.ui.navigation.complaintsNavGraph
+import com.example.departmentalresourcemanagement.features.complaints.ui.navigation.navigateToComplaintsScreen
 import com.example.departmentalresourcemanagement.features.cr.ui.navigation.crNavGraph
 import com.example.departmentalresourcemanagement.features.cr.ui.navigation.navigateToCRScreen
 import com.example.departmentalresourcemanagement.features.crprofiles.ui.navigation.crProfileNavGraph
@@ -56,6 +58,7 @@ fun DepartmentNavHost(
         officialsNavGraph(navigateBack = navController::popBackStack)
         facultyNavGraph (navigateBack = navController::popBackStack)
         crProfileNavGraph(navigateBack = navController::popBackStack)
+        complaintsNavGraph(navigateBack = navController::popBackStack)
     }
 }
 
@@ -88,12 +91,10 @@ fun handleHomeNavigation(
         HomeDestinations.OFFICIALS -> navController.navigateToOfficialsScreen()
         HomeDestinations.Timetable -> navController.navigateToTimeTableScreen()
         HomeDestinations.CRS_PROFILES -> navController.navigateToCrProfileScreen()
+        HomeDestinations.COMPLAINTS->navController.navigateToComplaintsScreen()
     }
 }
 
-fun <T : Activity> startActivity(context: Context, clazz: Class<T>) {
-    context.startActivity(Intent(context, clazz))
-}
 
 private fun openAppInfo(context: Context) {
     val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
@@ -105,6 +106,5 @@ private fun openAppInfo(context: Context) {
 internal object RevanthNavGraph {
     const val ROOT_GRAPH = "root_graph"
     const val AUTH_GRAPH = "auth_graph"
-    const val PASSCODE_GRAPH = "passcode_graph"
     const val MAIN_GRAPH = "main_graph"
 }

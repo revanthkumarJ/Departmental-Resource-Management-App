@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.departmentalresourcemanagement.api.fetchTimeTableData
+import com.example.departmentalresourcemanagement.core.ui.RevanthLoader
 import com.example.departmentalresourcemanagement.core.ui.RevanthScaffold
 import com.example.departmentalresourcemanagement.core.ui.RevanthTopBar
 import com.example.departmentalresourcemanagement.features.timetable.model.TimetablecardContent
@@ -20,14 +22,19 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun TimeTableScreen(navigateBack: () -> Unit) {
-    val timeTableData = mapOf(
-        "Monday" to List(7) { TimetablecardContent(sub = "DBMS", faculty = "RatnaKumari") },
-        "Tuesday" to List(7) { TimetablecardContent(sub = "OS", faculty = "Vamsi Krishna") },
-        "Wednesday" to List(7) { TimetablecardContent(sub = "CN", faculty = "Harika") },
-        "Thursday" to List(7) { TimetablecardContent(sub = "DAA", faculty = "Ravi Teja") },
-        "Friday" to List(7) { TimetablecardContent(sub = "AI", faculty = "Suresh") },
-        "Saturday" to List(7) { TimetablecardContent(sub = "ML", faculty = "Praveen") }
-    )
+    val timeTableData = remember { mutableStateOf<Map<String, List<TimetablecardContent>>>(emptyMap()) }
+    val isLoading = remember { mutableStateOf(true) }
+    val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            fetchTimeTableData { data ->
+                timeTableData.value = data
+                isLoading.value = false
+            }
+        }
+
+    }
 
     RevanthScaffold(
         topBar = {
@@ -37,12 +44,17 @@ fun TimeTableScreen(navigateBack: () -> Unit) {
             )
         },
         content = { padding ->
-            TabRowWithPager(timeTableData, Modifier.padding(padding))
+            if (isLoading.value) {
+                RevanthLoader()
+            } else {
+                TabRowWithPager(timeTableData.value, Modifier.padding(padding))
+            }
         }
     )
 }
 
-@OptIn(ExperimentalPagerApi::class)
+
+
 @Composable
 fun TabRowWithPager(timeTableData: Map<String, List<TimetablecardContent>>, modifier: Modifier) {
     val days = timeTableData.keys.toList()
@@ -92,4 +104,3 @@ fun TabRowWithPager(timeTableData: Map<String, List<TimetablecardContent>>, modi
         }
     }
 }
-

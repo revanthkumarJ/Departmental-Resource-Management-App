@@ -30,7 +30,7 @@ fun NavGraphBuilder.homeRoute(
         route = HomeNavigation.HomeScreen.route
     ) {
         HomeContent(
-            username = "dd",
+            username = "Revanth J",
             openNotifications = {},
             onNavigate = onNavigate,
             userBitmap = null,

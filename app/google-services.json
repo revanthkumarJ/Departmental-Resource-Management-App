@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "2163501123",
+    "project_id": "department-management-ap-1c420",
+    "storage_bucket": "department-management-ap-1c420.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2163501123:android:003f579e6b78f58e020cf6",
+        "android_client_info": {
+          "package_name": "com.example.departmentalresourcemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2163501123-ffmdqflfto0u1184mupa6cfp5ogdfq0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.departmentalresourcemanagement",
+            "certificate_hash": "d3c9c54f57b265f744ab551aef678f1aa99f4f73"
+          }
+        },
+        {
+          "client_id": "2163501123-m51kinarjoe6g3aamk27otbsvga9698k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAimbqzhNl8FoZRFYTa2PBA5fqUwaepr-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2163501123-m51kinarjoe6g3aamk27otbsvga9698k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

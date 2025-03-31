@@ -28,6 +28,10 @@ enum class HomeNavigationItems(
         nameResId = R.string.timeTable,
         imageVector = Icons.Default.Home,
     ),
+    Complaints(
+        nameResId = R.string.complaints,
+        imageVector = Icons.Default.Home,
+    ),
     HOD(
         nameResId = R.string.message_from_hod,
         imageVector = Icons.Default.Star,

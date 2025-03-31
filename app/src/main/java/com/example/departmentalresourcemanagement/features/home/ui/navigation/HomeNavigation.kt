@@ -21,7 +21,8 @@ enum class HomeDestinations {
     HOD,
     OFFICIALS,
     Timetable,
-    CRS_PROFILES
+    CRS_PROFILES,
+    COMPLAINTS
 }
 
 fun HomeNavigationItems.toDestination(): HomeDestinations {
@@ -37,5 +38,6 @@ fun HomeNavigationItems.toDestination(): HomeDestinations {
         HomeNavigationItems.OFFICIALS -> HomeDestinations.OFFICIALS
         HomeNavigationItems.Timetable -> HomeDestinations.Timetable
         HomeNavigationItems.CR_PROFILES -> HomeDestinations.CRS_PROFILES
+        HomeNavigationItems.Complaints -> HomeDestinations.COMPLAINTS
     }
 }

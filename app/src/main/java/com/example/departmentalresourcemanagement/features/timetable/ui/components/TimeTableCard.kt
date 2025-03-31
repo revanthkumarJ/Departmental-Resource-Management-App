@@ -10,7 +10,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 var timings= listOf(
@@ -43,13 +42,19 @@ fun TimeTableCard(ind:Int,sub:String,faculty:String) {
                 Text("Period ${ind+1}")
                 Text(timings[ind])
             }
-            Column (
+            if(sub!="Unknown")
+            {
+                Column (
 
-            ){
-                Text(sub)
-                Text(faculty)
+                ){
+                    Text(sub)
+                    Text(faculty)
+                }
             }
+            else{
+                Text("Free Period")
+            }
+
         }
     }
-
 }

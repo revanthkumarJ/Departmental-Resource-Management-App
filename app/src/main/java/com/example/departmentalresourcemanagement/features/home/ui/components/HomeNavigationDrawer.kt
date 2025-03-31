@@ -20,6 +20,7 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -69,34 +70,31 @@ internal fun HomeNavigationDrawer(
                         key = { it.hashCode() },
                         contentType = { "NavigationItem" },
                     ) { item ->
-
-                        NavigationDrawerItem(
-                            modifier = Modifier.padding(horizontal = 20.dp),
-                            label = {
-                                Row {
-                                    Icon(
-                                        imageVector = item.imageVector,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary,
-                                    )
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text(text = stringResource(id = item.nameResId))
-                                }
-                            },
-                            selected = false,
-                            onClick = { navigateItem(item) },
-                        )
-                        Spacer(modifier = Modifier.height(12.dp))
-                        if (item == HomeNavigationItems.CR_PROFILES) {
-                            Column {
-                                Spacer(modifier = Modifier.height(12.dp))
-                                HorizontalDivider(
-                                    modifier = Modifier.padding(horizontal = 20.dp),
-                                )
+                        Column {
+                            NavigationDrawerItem(
+                                modifier = Modifier.padding(horizontal = 20.dp),
+                                label = {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Icon(
+                                            imageVector = item.imageVector,
+                                            contentDescription = null,
+                                            tint = MaterialTheme.colorScheme.primary,
+                                        )
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text(text = stringResource(id = item.nameResId),modifier = Modifier.align(Alignment.CenterVertically))
+                                    }
+                                },
+                                selected = false,
+                                onClick = { navigateItem(item) },
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            if (item == HomeNavigationItems.CR_PROFILES) {
+                                HorizontalDivider(modifier = Modifier.padding(horizontal = 20.dp))
                                 Spacer(modifier = Modifier.height(12.dp))
                             }
                         }
                     }
+
                 }
             }
         },
